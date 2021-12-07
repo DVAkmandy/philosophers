@@ -50,7 +50,7 @@ void	create_mutex(t_common *common)
 			common -> philo[cnt].r_fork = &common ->mutex[0];
 	}
 	if (common -> philosopher == 1)
-		common -> philo[0].r_fork = 0;
+		common -> philo[0].r_fork = &common->mutex[0];
 	if (pthread_mutex_init(&common -> message, NULL) != 0)
 		print("Error: mutex_init\n");
 }
