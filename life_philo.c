@@ -38,11 +38,11 @@ void	*life_philo(void *argv)
 		if (philo -> eat_cnt != 0)
 		{
 			take_fork(philo);
-			philo->time_finish = get_time();
 			message(philo, "is eating");
-			philo->eat_cnt--;
+			philo->time_finish = get_time();
 			time_cnt(philo->common->eat_time);
 			put_fork(philo);
+			philo->eat_cnt--;
 			message(philo, "is sleeping");
 			time_cnt(philo->common->sleep_time);
 			message(philo, "is thinking");

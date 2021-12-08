@@ -15,11 +15,11 @@
 void	message(t_philo *philo, char *str)
 {
 	if (pthread_mutex_lock(&philo->common->message))
-		print("Error: mutex_lock");
+		print("Error: mutex_lock\n");
 	printf("time (%lu) - philo (%d) : %s\n",
 		(get_time() - philo->common->start_time), philo->id_thread, str);
 	if (pthread_mutex_unlock(&philo->common->message))
-		print("Error: mutex_unlock");
+		print("Error: mutex_unlock\n");
 	return ;
 }
 
@@ -41,7 +41,7 @@ int	val_dead(t_common *common, int cnt)
 	if ((int)(dead) > common->life_time)
 	{
 		pthread_mutex_lock(&common->message);
-		printf("time (%lu) - Philo %d dead", dead, cnt + 1);
+		printf("time (%lu) - Philo %d dead\n", dead, cnt + 1);
 		return (1);
 	}
 	return (0);
@@ -67,7 +67,7 @@ void	*check_dead(void *common)
 		if (cnt_eat == 0)
 		{
 			pthread_mutex_lock(&tmp->message);
-			printf("%s ", "All the philosophers have eaten");
+			printf("%s", "All the philosophers have eaten\n");
 			return (NULL);
 		}
 	}
